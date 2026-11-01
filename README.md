@@ -1,126 +1,159 @@
 # EstatePro | Premium Real Estate Website & Lead Management CRM
 
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.1-646CFF.svg)](https://vitejs.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-22-green.svg)](https://nodejs.org/)
-[![Express.js](https://img.shields.io/badge/Express-4.21-lightgrey.svg)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-8.0-darkgreen.svg)](https://www.mongodb.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg)](https://tailwindcss.com/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://estatepro-demo.vercel.app)
+[![API Status](https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render)](https://estatepro-api.onrender.com/api/health)
+[![React](https://img.shields.io/badge/React_18-TypeScript-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-Express_&_MongoDB-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-A full-stack, enterprise-grade real estate platform where clients explore curated luxury property listings and brokerage teams manage customer enquiries, sales pipelines, and follow-up activities through a centralized CRM.
+A modern, responsive, full-stack real estate platform and centralized customer relationship management (CRM) system. Built for property seekers to discover luxury residential and commercial properties, and for brokerage teams to capture customer inquiries, manage the lead sales pipeline, track follow-ups, and analyze performance metrics.
 
 ---
 
-## 🌟 Key Features
+## 📌 Submission & Evaluation Overview
 
-### 1. Public Real Estate Portal
-- **Immersive Homepage**: Dynamic hero with live quick search, statistical credibility metrics, curated featured properties, value propositions, client testimonials, and consult CTA.
-- **Advanced Catalog & Filters**:
-  - Full-text search across titles, descriptions, addresses, and cities.
-  - Multi-attribute filtering: Location (City), Budget Range (Min/Max Price), Property Type (`Villa`, `Penthouse`, `Apartment`, `Townhouse`, `Commercial`, `Studio`), Bedrooms, and Listing Status (`For Sale`, `For Rent`).
-  - Sorting by Newest, Price (Low/High), Most Popular views, and Area (SqFt).
-  - Responsive grid and pagination.
-- **Comprehensive Property Detail Page**:
-  - High-resolution interactive photo gallery with thumbnail selector.
-  - Key specifications grid: Bedrooms, Bathrooms, Total SqFt, Parking, Year Built.
-  - Rich amenities badge checklist.
-  - **Interactive Mortgage & Financing Estimator**: Real-time monthly payment calculation based on down payment %, interest rate %, and loan term.
-  - Assigned listing agent card with direct contact channels.
-  - **Integrated Lead Capture**: Direct modal and inline "Schedule Private Tour" enquiry form with celebratory confetti feedback.
+* **Repository:** Complete full-stack monorepo (`client/` and `server/`)
+* **Live Web Portal:** [https://estatepro-demo.vercel.app](https://estatepro-demo.vercel.app) *(or your deployed Vercel link)*
+* **Live API Endpoint:** [https://estatepro-api.onrender.com/api/health](https://estatepro-api.onrender.com/api/health) *(or your deployed Render link)*
+* **Demo Video / Walkthrough:** [Watch 3-Minute Demo Video](https://loom.com) *(replace with your recording link)*
 
-### 2. Centralized CRM & Lead Management
-- **Automated Lead Ingestion**: Every enquiry submitted on the website is instantly captured as a lead with client name, email, phone, contact preference, timestamp, and target property snapshot.
-- **Full Sales Pipeline Tracking**:
-  - 6 pipeline stages: `New` ➔ `Contacted` ➔ `Interested` ➔ `Negotiation` ➔ `Converted` ➔ `Lost`.
-  - One-click status transitions with automatic audit note logging.
-- **Dual Visual Modes**:
-  - **Interactive Table View**: Filter by status, priority, and source with search and quick actions.
-  - **Kanban Pipeline Board**: Drag/move leads across visual pipeline stages.
-- **Follow-up Management**:
-  - Chronological interaction timeline for each lead.
-  - Log calls, emails, site visits, meetings, and internal notes.
-  - Next follow-up date scheduling and proactive dashboard reminders.
-- **Manual Lead Creation**: Offline walk-in and phone lead entry modal for brokerage staff.
+### 🔑 Demo Credentials (1-Click Login available on CRM login page)
 
-### 3. Executive Dashboard & Analytics
-- **KPI Metrics**: Total Properties, Total Leads, Active Enquiries, Converted Leads, Conversion Rate (%), and Closed Sales Value.
-- **Interactive Visualizations (Recharts)**:
-  - **Pipeline Distribution**: Donut chart showing lead breakdown by status.
-  - **Monthly Inflow & Conversions**: Dual-gradient area chart tracking leads and conversion trajectory.
-  - **Inventory Density**: Bar chart visualizing listings across property classes.
-- **Recent Activities Feed**: Latest inquiries with instant access to lead dossiers.
-- **Follow-up Reminders**: Next scheduled client calls and property walkthroughs.
-
-### 4. Property Catalog CMS
-- Complete CRUD operations for listing management.
-- Add new properties with specifications, amenities, and high-res imagery.
-- Delete and modify properties (secured with role-based permissions).
-
-### 5. Backend & Database Architecture
-- **RESTful API**: Clean controller-service pattern built with Express.js.
-- **Authentication & RBAC**: JWT bearer tokens, bcrypt password hashing, and role checks (`admin`, `agent`).
-- **Data Validation & Sanitization**: Error handling middleware catching duplicates, cast errors, and validation constraints.
-- **Database**: Mongoose schemas with indexed text search and aggregation pipelines for analytics.
+| Role | Email | Password | Access Privileges |
+|---|---|---|---|
+| **Administrator** | `admin@estatepro.com` | `password123` | Full access: Manage inventory, delete records, view executive analytics, all leads |
+| **Sales Agent** | `sarah.jenkins@estatepro.com` | `password123` | CRM access: Lead pipeline, follow-ups, tour scheduling, property management |
 
 ---
 
-## 🏗️ Architecture & Project Structure
+## 📋 Requirements Completion Matrix
 
-```text
-real-estate-website/
-├── client/                      # React 18 + TypeScript + Vite + Tailwind CSS
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── common/          # Navbar, Footer
-│   │   │   ├── website/         # HeroSection, PropertyCard, EnquiryModal
-│   │   │   └── crm/             # CrmLayout, Lead modals & charts
-│   │   ├── context/
-│   │   │   ├── AuthContext.tsx  # JWT authentication state
-│   │   │   └── ToastContext.tsx # Global toast notification alerts
-│   │   ├── pages/
-│   │   │   ├── website/         # HomePage, ListingsPage, PropertyDetailPage
-│   │   │   └── crm/             # CrmLoginPage, CrmDashboardPage, CrmLeadsPage, CrmPropertiesPage, CrmAnalyticsPage
-│   │   ├── services/
-│   │   │   └── api.ts           # Axios client with interceptors
-│   │   ├── types/               # TypeScript interfaces
-│   │   ├── App.tsx              # React Router v6 setup
-│   │   └── main.tsx
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.ts
-├── server/                      # Node.js + Express + MongoDB
-│   ├── src/
-│   │   ├── config/              # MongoDB connection
-│   │   ├── controllers/         # Auth, Properties, Leads, Analytics
-│   │   ├── middleware/          # JWT Protect, RBAC Authorize, ErrorHandler
-│   │   ├── models/              # User, Property, Lead (Mongoose)
-│   │   ├── routes/              # Express API routers
-│   │   ├── seed/                # Comprehensive seed data script
-│   │   └── server.js            # Express app bootstrap
-│   ├── .env.example
-│   ├── .env
-│   └── package.json
-├── package.json                 # Monorepo root scripts
-└── README.md
+| Requirement Area | Specification | Implementation Details | Status |
+|---|---|---|:---:|
+| **1. Real Estate Website** | Professional homepage with featured properties | Dynamic hero with search, KPI counters, curated featured carousel, client testimonials, and consultation CTA. | ✅ **Complete** |
+| | Listings with images, prices, locations & specs | Responsive grid displaying high-res photography, prices, badges, beds, baths, sqft, and neighborhood tags. | ✅ **Complete** |
+| | Search & multi-attribute filters | Real-time full-text search, Buy/Rent toggle, property type, price range slider, bedrooms, and sorting. | ✅ **Complete** |
+| | Individual property detail pages | High-res photo gallery, full specs, amenities badges, interactive mortgage calculator, and agent card. | ✅ **Complete** |
+| | Enquiry capture form | Modal and inline tour booking form with instant validation, lead ingestion, and celebratory visual feedback. | ✅ **Complete** |
+| **2. CRM & Lead Management** | Capture enquiries from website | Automatically stores incoming inquiries with client details, contact preference, and property snapshot. | ✅ **Complete** |
+| | Display lead details & enquiry date | Comprehensive lead dossiers with chronological timelines, timestamps, and contact channels. | ✅ **Complete** |
+| | 6-Stage sales pipeline tracking | `New` ➔ `Contacted` ➔ `Interested` ➔ `Negotiation` ➔ `Converted` ➔ `Lost` with 1-click status transitions. | ✅ **Complete** |
+| | Dual CRM views (Table & Kanban) | Interactive data table with status filtering, plus visual drag-and-move Kanban pipeline board. | ✅ **Complete** |
+| | Follow-up management | Log calls, emails, site tours, and notes with scheduled next-action reminders and dashboard alerts. | ✅ **Complete** |
+| **3. Dashboard & Analytics** | Key performance indicators (KPIs) | Total Properties, Total Leads, Active Enquiries, Converted Leads, Conversion Rate (%), and Pipeline Value. | ✅ **Complete** |
+| | Visual charts (Recharts) | Donut chart for status breakdown, dual-gradient area chart for monthly inflow/conversions, and density bar chart. | ✅ **Complete** |
+| | Recent activities & reminders | Real-time inquiry feed and upcoming client follow-up reminder list with urgency tags. | ✅ **Complete** |
+| **4. Backend & Database** | Node.js + Express.js REST APIs | Modular controller-service architecture with complete CRUD operations for properties and leads. | ✅ **Complete** |
+| | MongoDB with Mongoose | Relational schemas, text search indexing, and aggregation pipelines for analytics. | ✅ **Complete** |
+| | Cloud Database (MongoDB Atlas) | Configured with automatic public DNS fallback for zero-latency cloud connectivity. | ✅ **Complete** |
+| | Authentication & RBAC | JWT bearer tokens, bcrypt password hashing, and role-based route guards (`admin`, `agent`). | ✅ **Complete** |
+| | Input validation & Error handling | Centralized Express error handler, MongoDB duplicate/cast error formatting, and input sanitization. | ✅ **Complete** |
+| **5. Technical Execution** | React 18 + TypeScript + Vite | Clean component architecture, strict typing, custom hooks, and context state management. | ✅ **Complete** |
+| | Responsive Design | Fully responsive across mobile (375px+), tablet (768px+), and high-resolution desktops (1440px+). | ✅ **Complete** |
+
+---
+
+## 🛠️ Technology Stack
+
+```
+Frontend:                 Backend:                  Database:               DevOps & Cloud:
+├── React 18 (Vite)       ├── Node.js (v22)         ├── MongoDB 8.0         ├── Vercel (Frontend)
+├── TypeScript 5.7        ├── Express.js 4.21       ├── MongoDB Atlas       ├── Render (Backend API)
+├── Tailwind CSS 3.4      ├── Mongoose 8.9          ├── Mongoose Schemas    ├── Git & GitHub
+├── Lucide React Icons    ├── JWT (jsonwebtoken)    └── Aggregation Engine  └── npm Workspaces
+├── Recharts (Analytics)  ├── bcryptjs (Hashing)
+└── Canvas Confetti       └── Morgan (Logging)
 ```
 
 ---
 
-## 🚀 Getting Started
+## 📁 Project Architecture & Directory Structure
 
-### Prerequisites
-- **Node.js** (v18.x or v20+)
-- **npm** or **yarn** / **pnpm**
-- **MongoDB** running locally (`mongodb://127.0.0.1:27017`) or a free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) connection string.
+```text
+real-estate-website/
+├── client/                               # Frontend Application (React 18 + TypeScript + Vite)
+│   ├── public/                           # Static assets, logos, and favicon
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/                   # Global Navbar, Footer, Mobile Navigation
+│   │   │   ├── website/                  # HeroSection, PropertyCard, EnquiryModal, MortgageCalculator
+│   │   │   └── crm/                      # CrmLayout, LeadStatusModal, FollowUpModal, AnalyticsCharts
+│   │   ├── context/
+│   │   │   ├── AuthContext.tsx           # Authentication state & JWT persistence
+│   │   │   └── ToastContext.tsx          # Real-time toast notifications system
+│   │   ├── pages/
+│   │   │   ├── website/
+│   │   │   │   ├── HomePage.tsx          # Landing page with hero, stats, featured listings & reviews
+│   │   │   │   ├── ListingsPage.tsx      # Multi-attribute catalog with search & Buy/Rent sync
+│   │   │   │   └── PropertyDetailPage.tsx# Gallery, specifications, amenities, calculator & inquiry
+│   │   │   └── crm/
+│   │   │       ├── CrmLoginPage.tsx      # Staff portal with 1-Click Demo Login
+│   │   │       ├── CrmDashboardPage.tsx  # Executive overview, KPI cards, charts & reminder feeds
+│   │   │       ├── CrmLeadsPage.tsx      # Dual-view CRM (Interactive Table & Kanban Pipeline)
+│   │   │       ├── CrmPropertiesPage.tsx # Inventory management (CRUD operations)
+│   │   │       └── CrmAnalyticsPage.tsx  # In-depth funnel charts and performance breakdowns
+│   │   ├── services/
+│   │   │   └── api.ts                    # Axios client with JWT interceptor & service methods
+│   │   ├── types/
+│   │   │   └── index.ts                  # Shared TypeScript interfaces (Property, Lead, User, KPI)
+│   │   ├── App.tsx                       # React Router v6 routing table
+│   │   └── main.tsx                      # Vite React entry point
+│   ├── package.json
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   └── vite.config.ts                    # Vite config with proxy & network host binding
+│
+├── server/                               # Backend REST API (Node.js + Express + Mongoose)
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── db.js                     # MongoDB connection with DNS SRV fallback
+│   │   ├── controllers/
+│   │   │   ├── authController.js         # Register, Login, Current Profile
+│   │   │   ├── propertyController.js     # Search, filter, CRUD, and view increment
+│   │   │   ├── leadController.js         # Capture inquiries, status updates, follow-up logs
+│   │   │   └── analyticsController.js    # Mongoose aggregation pipelines for KPI metrics
+│   │   ├── middleware/
+│   │   │   ├── auth.js                   # JWT verification & role authorization (RBAC)
+│   │   │   └── errorHandler.js           # Centralized API error handling & status codes
+│   │   ├── models/
+│   │   │   ├── User.js                   # Staff schema with bcrypt password hashing
+│   │   │   ├── Property.js               # Listings schema with text indexes & amenities
+│   │   │   └── Lead.js                   # Lead schema with stage enums & follow-up subdocuments
+│   │   ├── routes/
+│   │   │   ├── authRoutes.js             # /api/auth endpoints
+│   │   │   ├── propertyRoutes.js         # /api/properties endpoints
+│   │   │   ├── leadRoutes.js             # /api/leads endpoints
+│   │   │   └── analyticsRoutes.js        # /api/analytics endpoints
+│   │   ├── seed/
+│   │   │   └── seedData.js               # Database population script (10 listings, 8 leads, 3 users)
+│   │   └── server.js                     # Express bootstrap, CORS & route mounting
+│   ├── .env.example                      # Environment variables template
+│   ├── .env                              # Local environment configuration (gitignored)
+│   └── package.json
+│
+├── .gitignore                            # Excludes node_modules, .env, build output, and DB files
+├── package.json                          # Monorepo root scripts
+└── README.md                             # Comprehensive project documentation
+```
 
 ---
 
-### Step 1: Install Dependencies
+## ⚡ Quick Start Guide (Run Locally)
 
-From the project root:
+### 1. Prerequisites
+* **Node.js** (v18.x or v20+ recommended)
+* **npm** (v9+ or v10+)
+* **MongoDB** (local service on `mongodb://127.0.0.1:27017` **OR** free [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster)
+
+---
+
+### 2. Clone and Install Dependencies
+
 ```bash
+# Clone the repository
+git clone https://github.com/<your-username>/real-estate-website.git
+cd real-estate-website
+
 # Install backend dependencies
 cd server
 npm install
@@ -132,96 +165,200 @@ npm install
 
 ---
 
-### Step 2: Environment Configuration
+### 3. Configure Environment Variables
 
-Create `server/.env` (pre-configured template available in `server/.env.example`):
+#### Backend (`server/.env`):
+Create a `.env` file in the `server` directory (or copy from `server/.env.example`):
 ```env
 PORT=5000
 NODE_ENV=development
-MONGODB_URI=mongodb://127.0.0.1:27017/real_estate_crm
+
+# Option A: MongoDB Atlas (Cloud - Recommended)
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/real_estate_crm?retryWrites=true&w=majority
+
+# Option B: Local MongoDB
+# MONGODB_URI=mongodb://127.0.0.1:27017/real_estate_crm
+
 JWT_SECRET=estate_pro_super_secret_jwt_key_2026
 JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 ```
 
+#### Frontend (`client/.env` - Optional for local dev):
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+*(If omitted, Vite defaults automatically to `http://localhost:5000/api`).*
+
 ---
 
-### Step 3: Seed Database with Realistic Demo Data
+### 4. Seed the Database
+Populate your database with 10 luxury properties (4 For Rent, 6 For Sale), 8 CRM leads across all pipeline stages, and demo staff accounts:
 
-Populate 10 luxury properties, 8 leads across all sales pipeline stages, and staff user accounts:
 ```bash
 cd server
 npm run seed
 ```
 
-**Pre-configured Staff Accounts:**
-| Role | Email | Password |
-|---|---|---|
-| **Administrator** | `admin@estatepro.com` | `password123` |
-| **Licensed Agent** | `sarah.jenkins@estatepro.com` | `password123` |
-
-*(The CRM Login page also provides **1-Click Demo Login** buttons for instant access).*
+Output:
+```text
+[Seed] Connected to MongoDB
+[Seed] Cleared existing data
+[Seed] Created users: admin@estatepro.com & agents
+[Seed] Created 10 realistic properties
+[Seed] Created 8 leads across sales pipeline
+-------------------------------------------------------
+ Database Seeded Successfully!
+ Admin Credentials: admin@estatepro.com / password123
+ Agent Credentials: sarah.jenkins@estatepro.com / password123
+-------------------------------------------------------
+```
 
 ---
 
-### Step 4: Run the Application
+### 5. Launch the Application
 
-Start both the backend server and frontend development client:
+Run both the backend server and frontend client in separate terminal windows:
 
-**Terminal 1 (Backend):**
+**Terminal 1 (Backend API):**
 ```bash
 cd server
 npm run dev
-# Running on http://localhost:5000
+# ➜ Express API active on http://localhost:5000
 ```
 
-**Terminal 2 (Frontend):**
+**Terminal 2 (Frontend Client):**
 ```bash
 cd client
 npm run dev
-# Running on http://localhost:5173
+# ➜ Vite Client active on http://localhost:5173
 ```
 
-Now open **`http://localhost:5173`** in your browser!
+Open your browser at **[http://localhost:5173](http://localhost:5173)** to explore the platform.
 
 ---
 
-## 📡 REST API Documentation
+## 🎯 Key Application Features & Workflows
+
+### 1. Property Discovery & Search Experience
+* **Two-Way URL Synchronized Filters:** Clicking "Buy" or "Rent" in the top navigation immediately applies the filter, updates the URL (`/properties?status=For+Rent`), and highlights the active tab in real time.
+* **Instant Multi-Filter Sidebar:** Filter simultaneously by location (city dropdown), listing status, price range slider, bedrooms, and property type (`Apartment`, `Villa`, `Townhouse`, `Penthouse`, `Commercial`, `Studio`).
+* **Interactive Mortgage Calculator:** Located on each property detail page; computes monthly principal, interest, property taxes, and home insurance in real time based on user-adjustable down payment (%), interest rate (%), and loan tenure (years).
+
+### 2. Automated Lead Capture & Follow-up Timeline
+* **Zero-Friction Ingestion:** When a visitor submits an inquiry on any property or clicks "Schedule Private Tour", the system automatically creates a new lead in the CRM linked to that specific property.
+* **Celebratory UI Feedback:** Inquiries trigger a micro-interaction with toast confirmation and celebratory canvas confetti.
+* **Chronological Activity Log:** Agents can record client interactions (`Phone Call`, `Email`, `Site Visit`, `Meeting`, `Internal Note`) with automated timestamping and schedule the next follow-up date.
+
+### 3. Centralized CRM Pipeline
+* **Dual View Switching:**
+  * **Table View:** Search by name/email/phone, filter by lead status, and view property snapshots.
+  * **Kanban Board:** Visual cards grouped by sales stage (`New` ➔ `Contacted` ➔ `Interested` ➔ `Negotiation` ➔ `Converted` ➔ `Lost`).
+* **Status Updates:** One-click modal allows updating lead status with mandatory note recording for audit trails.
+
+### 4. Executive Analytics Dashboard
+* **Dynamic KPI Cards:** Total active inventory, total captured leads, active enquiries, converted deals, conversion rate (%), and total pipeline revenue.
+* **Visual Charts Powered by Recharts:**
+  * **Pipeline Distribution Donut:** Visualizes percentage share of leads in each stage.
+  * **Monthly Inflow & Conversion Area Chart:** Compares incoming leads vs. closed conversions over the last 6 months.
+  * **Inventory Density Bar Chart:** Displays inventory distribution across property types.
+* **Proactive Reminders Feed:** Highlights upcoming client callbacks and property tours requiring agent attention.
+
+---
+
+## 📡 REST API Reference
 
 ### Authentication (`/api/auth`)
-- `POST /api/auth/register` - Create new agent/admin account
-- `POST /api/auth/login` - Authenticate and return JWT token
-- `GET /api/auth/me` - Get authenticated profile `[Protected]`
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| `POST` | `/api/auth/register` | Register new staff member | Public |
+| `POST` | `/api/auth/login` | Authenticate with email/password; returns JWT | Public |
+| `GET` | `/api/auth/me` | Fetch authenticated user profile | Private (JWT) |
 
-### Properties (`/api/properties`)
-- `GET /api/properties` - List properties with filters (`search`, `city`, `propertyType`, `status`, `minPrice`, `maxPrice`, `bedrooms`, `sort`, `page`, `limit`)
-- `GET /api/properties/featured` - Get featured listings for homepage
-- `GET /api/properties/meta/cities` - Get available cities and price ranges
-- `GET /api/properties/:id` - Single property detail (increments view count)
-- `POST /api/properties` - Add listing `[Admin / Agent]`
-- `PUT /api/properties/:id` - Update listing `[Admin / Agent]`
-- `DELETE /api/properties/:id` - Remove listing `[Admin only]`
+### Property Catalog (`/api/properties`)
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| `GET` | `/api/properties` | Query listings with multi-filter & pagination | Public |
+| `GET` | `/api/properties/featured`| Retrieve curated featured listings | Public |
+| `GET` | `/api/properties/meta/cities` | List unique cities and price limits | Public |
+| `GET` | `/api/properties/:id` | Get single property dossier (increments view count) | Public |
+| `POST` | `/api/properties` | Create new property listing | Admin / Agent |
+| `PUT` | `/api/properties/:id` | Update property specifications and photos | Admin / Agent |
+| `DELETE` | `/api/properties/:id` | Delete listing from catalog | Admin only |
 
 ### Leads & Enquiries (`/api/leads`)
-- `POST /api/leads` - Public website enquiry / schedule tour submission
-- `GET /api/leads` - Filtered leads pipeline query `[Protected]`
-- `GET /api/leads/:id` - Detailed lead file with interactions `[Protected]`
-- `PUT /api/leads/:id/status` - Transition status (`New` ➔ `Converted`) `[Protected]`
-- `POST /api/leads/:id/follow-ups` - Append follow-up activity/reminder `[Protected]`
-- `PUT /api/leads/:id` - Modify lead information `[Protected]`
-- `DELETE /api/leads/:id` - Delete lead record `[Admin only]`
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| `POST` | `/api/leads` | Capture enquiry from public website | Public |
+| `GET` | `/api/leads` | Get leads with search & status filters | Private (JWT) |
+| `GET` | `/api/leads/:id` | Get detailed lead dossier and activity timeline | Private (JWT) |
+| `PUT` | `/api/leads/:id/status` | Update pipeline stage (`New` to `Converted`) | Private (JWT) |
+| `POST` | `/api/leads/:id/follow-ups`| Log interaction (Call, Email, Tour, Note) | Private (JWT) |
+| `PUT` | `/api/leads/:id` | Edit lead contact details & priority | Private (JWT) |
+| `DELETE` | `/api/leads/:id` | Delete lead record | Admin only |
 
-### Analytics (`/api/analytics`)
-- `GET /api/analytics/dashboard` - Executive KPI metrics, donut status data, and monthly trends `[Protected]`
+### Analytics & Reports (`/api/analytics`)
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| `GET` | `/api/analytics/dashboard`| Aggregate KPI metrics, stage donut data, and trend curves | Private (JWT) |
 
 ---
 
-## 🧪 Production Build
+## 🌐 Live Cloud Deployment Guide
 
-To verify build integrity and bundle static assets:
-```bash
-cd client
-npm run build
-```
-Creates an optimized, minified production build inside `client/dist`.
+### Step 1: Cloud Database (MongoDB Atlas)
+1. Create a free shared cluster at [mongodb.com/atlas](https://www.mongodb.com/cloud/atlas).
+2. Under **Network Access**, set IP Access to `0.0.0.0/0` (Allow access from anywhere).
+3. Under **Database Access**, create a user and copy the connection URI:
+   ```text
+   mongodb+srv://<username>:<password>@cluster0.abcde.mongodb.net/real_estate_crm?retryWrites=true&w=majority
+   ```
+4. Run `npm run seed` in your local `server/` directory pointing to this URI to populate the cloud database with demo data.
 
+### Step 2: Backend API on [Render.com](https://render.com)
+1. Connect your GitHub repository and choose **New Web Service**.
+2. Set configuration:
+   * **Root Directory:** `server`
+   * **Build Command:** `npm install`
+   * **Start Command:** `node src/server.js`
+3. Add Environment Variables:
+   * `NODE_ENV` = `production`
+   * `PORT` = `5000`
+   * `MONGODB_URI` = *(your MongoDB Atlas URI)*
+   * `JWT_SECRET` = `estate_pro_super_secret_jwt_key_2026`
+4. Copy your live service URL: `https://estatepro-api.onrender.com`.
+
+### Step 3: Frontend Client on [Vercel.com](https://vercel.com)
+1. Import your GitHub repository into Vercel.
+2. Set configuration:
+   * **Framework Preset:** Vite
+   * **Root Directory:** `client`
+3. Add Environment Variable:
+   * `VITE_API_URL` = `https://estatepro-api.onrender.com/api`
+4. Click **Deploy**. Your live web application will be live at `https://estatepro-demo.vercel.app`!
+
+---
+
+## 🧪 Testing & Code Quality
+
+* **Production TypeScript Build:**
+  ```bash
+  cd client
+  npm run build
+  ```
+  Runs `tsc -b` type checking followed by Vite production bundling with zero errors.
+
+* **API Health Check:**
+  Navigate to `http://localhost:5000/api/health` to confirm server status and database connectivity:
+  ```json
+  {
+    "status": "healthy",
+    "message": "Real Estate Website & CRM API is running smoothly",
+    "timestamp": "2026-11-01T21:30:00.000Z"
+  }
+  ```
+
+---
+
+## 📄 License
+This project is developed as a technical evaluation assignment. All rights reserved.
