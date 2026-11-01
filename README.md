@@ -17,7 +17,6 @@ A modern, responsive, full-stack real estate platform and centralized customer r
 * **Live Web Portal:** [https://realestatewebsiteswati.vercel.app/](https://realestatewebsiteswati.vercel.app/)
 * **Live API Health Endpoint:** [https://real-estate-website-nffm.onrender.com/api/health](https://real-estate-website-nffm.onrender.com/api/health)
 * **API Base URL:** [https://real-estate-website-nffm.onrender.com/api](https://real-estate-website-nffm.onrender.com/api)
-* **Demo Video / Walkthrough:** [Watch 3-Minute Demo Video](https://loom.com) *(Optional - Add your recording link here)*
 
 ### 🔑 Demo Credentials (1-Click Login available on CRM login page)
 
