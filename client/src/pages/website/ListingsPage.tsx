@@ -199,14 +199,14 @@ export const ListingsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Property Type Tabs (Desktop) */}
-          <div className="hidden lg:flex items-center gap-2 pt-2 border-t border-slate-100 overflow-x-auto">
+          {/* Quick Property Type Tabs (Responsive Scrollable on all devices) */}
+          <div className="flex items-center gap-2 pt-2 border-t border-slate-100 overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => {
                 setSelectedType('');
                 setCurrentPage(1);
               }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+              className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 !selectedType ? 'bg-brand-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -219,7 +219,7 @@ export const ListingsPage: React.FC = () => {
                   setSelectedType(type === selectedType ? '' : type);
                   setCurrentPage(1);
                 }}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
+                className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   selectedType === type
                     ? 'bg-brand-600 text-white shadow-sm'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -233,12 +233,8 @@ export const ListingsPage: React.FC = () => {
 
         {/* Main Content Layout: Sidebar Filters + Property Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Filter Sidebar (Desktop) & Mobile Drawer */}
-          <aside
-            className={`lg:col-span-1 space-y-6 ${
-              mobileFilterOpen ? 'block' : 'hidden lg:block'
-            }`}
-          >
+          {/* Desktop Filter Sidebar */}
+          <aside className="hidden lg:block lg:col-span-1 space-y-6">
             <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6 sticky top-28">
               <div className="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
@@ -258,7 +254,7 @@ export const ListingsPage: React.FC = () => {
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                   Listing Status
                 </label>
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-3 gap-1.5">
                   {['All', 'For Sale', 'For Rent'].map((st) => (
                     <button
                       key={st}
@@ -267,7 +263,7 @@ export const ListingsPage: React.FC = () => {
                         setSelectedStatus(st === 'All' ? '' : st);
                         setCurrentPage(1);
                       }}
-                      className={`py-2 px-3 rounded-lg text-xs font-semibold text-center transition ${
+                      className={`py-2 px-1 rounded-lg text-xs font-semibold text-center transition ${
                         (st === 'All' && !selectedStatus) || selectedStatus === st
                           ? 'bg-slate-900 text-white shadow-sm'
                           : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
@@ -394,6 +390,152 @@ export const ListingsPage: React.FC = () => {
             </div>
           </aside>
 
+          {/* Mobile Filter Slide-over Drawer */}
+          {mobileFilterOpen && (
+            <div className="fixed inset-0 z-50 lg:hidden flex animate-in fade-in">
+              <div
+                className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"
+                onClick={() => setMobileFilterOpen(false)}
+              />
+              <div className="relative ml-auto w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl z-10 flex flex-col">
+                <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                  <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
+                    <Filter className="w-4 h-4 text-brand-600" />
+                    <span>Filter Properties</span>
+                  </div>
+                  <button
+                    onClick={() => setMobileFilterOpen(false)}
+                    className="p-1 rounded-lg text-slate-400 hover:text-slate-700"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="p-5 overflow-y-auto flex-1 space-y-6 text-xs">
+                  {/* Status */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      Listing Status
+                    </label>
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {['All', 'For Sale', 'For Rent'].map((st) => (
+                        <button
+                          key={st}
+                          type="button"
+                          onClick={() => {
+                            setSelectedStatus(st === 'All' ? '' : st);
+                            setCurrentPage(1);
+                          }}
+                          className={`py-2 px-1 rounded-lg font-semibold text-center transition ${
+                            (st === 'All' && !selectedStatus) || selectedStatus === st
+                              ? 'bg-slate-900 text-white shadow-sm'
+                              : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
+                          }`}
+                        >
+                          {st}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* City */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      City / Location
+                    </label>
+                    <select
+                      value={selectedCity}
+                      onChange={(e) => {
+                        setSelectedCity(e.target.value);
+                        setCurrentPage(1);
+                      }}
+                      className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-xs bg-white"
+                    >
+                      <option value="">All Locations</option>
+                      {cities.map((city) => (
+                        <option key={city} value={city}>{city}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Price */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      Price Range ($)
+                    </label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <input
+                        type="number"
+                        placeholder="Min Price"
+                        value={minPrice}
+                        onChange={(e) => {
+                          setMinPrice(e.target.value);
+                          setCurrentPage(1);
+                        }}
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs"
+                      />
+                      <input
+                        type="number"
+                        placeholder="Max Price"
+                        value={maxPrice}
+                        onChange={(e) => {
+                          setMaxPrice(e.target.value);
+                          setCurrentPage(1);
+                        }}
+                        className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Bedrooms */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      Bedrooms
+                    </label>
+                    <div className="grid grid-cols-5 gap-1">
+                      {['All', '1', '2', '3', '4+'].map((bed) => {
+                        const bedVal = bed === '4+' ? '4' : bed === 'All' ? '' : bed;
+                        const isSelected = (!bedrooms && bed === 'All') || bedrooms === bedVal;
+                        return (
+                          <button
+                            key={bed}
+                            type="button"
+                            onClick={() => {
+                              setBedrooms(bedVal);
+                              setCurrentPage(1);
+                            }}
+                            className={`py-2 rounded-lg text-xs font-semibold text-center transition ${
+                              isSelected
+                                ? 'bg-brand-600 text-white'
+                                : 'bg-slate-50 text-slate-600 border border-slate-200'
+                            }`}
+                          >
+                            {bed}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 border-t border-slate-100 flex gap-2">
+                  <button
+                    onClick={handleResetFilters}
+                    className="flex-1 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50"
+                  >
+                    Reset
+                  </button>
+                  <button
+                    onClick={() => setMobileFilterOpen(false)}
+                    className="flex-1 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold shadow-md"
+                  >
+                    Show ({totalCount}) Results
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Properties Grid Container */}
           <main className="lg:col-span-3">
             {loading ? (
@@ -485,3 +627,4 @@ export const ListingsPage: React.FC = () => {
     </div>
   );
 };
+

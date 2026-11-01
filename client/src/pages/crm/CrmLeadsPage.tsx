@@ -443,8 +443,8 @@ export const CrmLeadsPage: React.FC = () => {
           </div>
         </div>
       ) : (
-        /* KANBAN PIPELINE BOARD VIEW */
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-4 overflow-x-auto pb-6">
+        /* KANBAN PIPELINE BOARD VIEW (Horizontal Swipe on Mobile & Grid on Desktop) */
+        <div className="flex md:grid md:grid-cols-3 xl:grid-cols-6 gap-4 overflow-x-auto pb-6 scrollbar-none snap-x snap-mandatory">
           {statuses.map((columnStatus) => {
             const columnLeads = leads.filter((l) => l.status === columnStatus);
             const pill = statusColors[columnStatus];
@@ -452,7 +452,7 @@ export const CrmLeadsPage: React.FC = () => {
             return (
               <div
                 key={columnStatus}
-                className="bg-slate-100/90 rounded-2xl p-3 border border-slate-200/80 flex flex-col h-[750px]"
+                className="bg-slate-100/90 rounded-2xl p-3 border border-slate-200/80 flex flex-col h-[620px] sm:h-[720px] min-w-[285px] sm:min-w-[320px] md:min-w-0 shrink-0 snap-center"
               >
                 {/* Column Header */}
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
@@ -831,3 +831,4 @@ export const CrmLeadsPage: React.FC = () => {
     </div>
   );
 };
+

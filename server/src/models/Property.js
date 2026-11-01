@@ -104,3 +104,4 @@ propertySchema.index({
 });
 
 export default mongoose.model('Property', propertySchema);
+

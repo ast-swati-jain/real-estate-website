@@ -124,3 +124,4 @@ const leadSchema = new mongoose.Schema(
 leadSchema.index({ name: 'text', email: 'text', phone: 'text', propertyName: 'text' });
 
 export default mongoose.model('Lead', leadSchema);
+

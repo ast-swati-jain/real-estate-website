@@ -344,3 +344,4 @@ export const deleteLead = async (req, res, next) => {
     next(error);
   }
 };
+

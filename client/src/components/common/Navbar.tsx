@@ -144,18 +144,38 @@ export const Navbar: React.FC = () => {
             Rent Properties
           </Link>
 
-          <div className="pt-4 border-t border-slate-100 space-y-3">
-            <Link
-              to="/crm"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-slate-900 text-white font-semibold text-sm shadow-md"
+          <div className="pt-4 border-t border-slate-100 space-y-2.5">
+            <a
+              href="tel:+15552345678"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 hover:border-brand-300 transition"
             >
-              <LayoutDashboard className="w-4 h-4 text-brand-400" />
-              <span>CRM Portal</span>
-            </Link>
+              <PhoneCall className="w-3.5 h-3.5 text-brand-600" />
+              <span>Call Concierge: (555) 234-5678</span>
+            </a>
+
+            {isAuthenticated ? (
+              <Link
+                to="/crm"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-slate-900 text-white font-semibold text-sm shadow-md"
+              >
+                <LayoutDashboard className="w-4 h-4 text-brand-400" />
+                <span>Open CRM Workspace ({user?.name || user?.role})</span>
+              </Link>
+            ) : (
+              <Link
+                to="/crm/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-brand-600 text-white font-semibold text-sm shadow-md shadow-brand-600/20"
+              >
+                <UserIcon className="w-4 h-4" />
+                <span>CRM Team Login</span>
+              </Link>
+            )}
           </div>
         </div>
       )}
     </header>
   );
 };
+

@@ -134,3 +134,4 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, onEnquireC
     </div>
   );
 };
+

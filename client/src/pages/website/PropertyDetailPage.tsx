@@ -178,8 +178,8 @@ export const PropertyDetailPage: React.FC = () => {
 
         {/* Gallery Section */}
         <div className="space-y-3">
-          {/* Main Large Viewer */}
-          <div className="relative aspect-[21/9] sm:aspect-[16/8] rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/60 shadow-md">
+          {/* Main Large Viewer (Responsive aspect ratio) */}
+          <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[16/8] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/60 shadow-md">
             <img
               src={images[activeImageIndex]}
               alt={property.title}
@@ -203,12 +203,12 @@ export const PropertyDetailPage: React.FC = () => {
 
           {/* Thumbnails row */}
           {images.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+            <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-2 scrollbar-none">
               {images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative w-24 h-16 rounded-xl overflow-hidden shrink-0 border-2 transition ${
+                  className={`relative w-20 sm:w-24 h-14 sm:h-16 rounded-xl overflow-hidden shrink-0 border-2 transition ${
                     activeImageIndex === idx
                       ? 'border-brand-600 ring-2 ring-brand-500/30'
                       : 'border-transparent opacity-70 hover:opacity-100'
@@ -532,3 +532,4 @@ export const PropertyDetailPage: React.FC = () => {
     </div>
   );
 };
+

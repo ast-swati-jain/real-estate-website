@@ -168,3 +168,4 @@ export const CrmAnalyticsPage: React.FC = () => {
     </div>
   );
 };
+

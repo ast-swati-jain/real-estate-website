@@ -282,3 +282,4 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({ property, isOpen, on
     </div>
   );
 };
+

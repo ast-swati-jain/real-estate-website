@@ -152,3 +152,4 @@ export interface PropertyFilterParams {
   page?: number;
   limit?: number;
 }
+

@@ -224,3 +224,4 @@ cd client
 npm run build
 ```
 Creates an optimized, minified production build inside `client/dist`.
+

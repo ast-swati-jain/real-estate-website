@@ -24,3 +24,4 @@ router.put('/:id', protect, updateLead);
 router.delete('/:id', protect, authorize('admin'), deleteLead);
 
 export default router;
+

@@ -58,24 +58,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ cities }) => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.18] sm:leading-[1.15]">
             Discover Exceptional Properties Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-blue-300 to-indigo-200">Extraordinary Lives</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl leading-relaxed">
             From iconic Manhattan penthouses to coastal California estates, explore curated architectural residences with our intelligent real estate and CRM platform.
           </p>
 
           {/* Search Box Card */}
-          <div className="pt-4">
+          <div className="pt-2 sm:pt-4">
             <div className="bg-white/95 backdrop-blur-xl p-4 sm:p-6 rounded-3xl shadow-2xl border border-white/20 text-slate-900">
               {/* Buy / Rent Switch & Types */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
-                <div className="inline-flex p-1 rounded-xl bg-slate-100/90 text-xs font-bold">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                <div className="inline-flex p-1 rounded-xl bg-slate-100/90 text-xs font-bold w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={() => setStatus('For Sale')}
-                    className={`px-4 py-1.5 rounded-lg transition ${
+                    className={`flex-1 sm:flex-none px-5 py-2 rounded-lg transition ${
                       status === 'For Sale' ? 'bg-brand-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
@@ -84,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ cities }) => {
                   <button
                     type="button"
                     onClick={() => setStatus('For Rent')}
-                    className={`px-4 py-1.5 rounded-lg transition ${
+                    className={`flex-1 sm:flex-none px-5 py-2 rounded-lg transition ${
                       status === 'For Rent' ? 'bg-brand-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
@@ -92,17 +92,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ cities }) => {
                   </button>
                 </div>
 
-                {/* Property Type Pills */}
-                <div className="hidden sm:flex items-center gap-1.5 overflow-x-auto">
+                {/* Property Type Pills (Responsive Scrollable on Mobile) */}
+                <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
                   {propertyTypes.map((type) => (
                     <button
                       key={type}
                       type="button"
                       onClick={() => setSelectedType(type)}
-                      className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
+                      className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                         selectedType === type
-                          ? 'bg-slate-900 text-white'
-                          : 'bg-slate-50 text-slate-600 hover:bg-slate-100'
+                          ? 'bg-slate-900 text-white shadow-xs'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                       }`}
                     >
                       {type}
@@ -158,7 +158,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ cities }) => {
                 <div className="flex items-end">
                   <button
                     type="submit"
-                    className="w-full py-2.5 px-5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-600/30 transition duration-200 h-[42px]"
+                    className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-brand-600/30 transition duration-200 min-h-[44px]"
                   >
                     <Search className="w-4 h-4" />
                     <span>Search Listings</span>
@@ -188,3 +188,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ cities }) => {
     </div>
   );
 };
+
