@@ -362,3 +362,37 @@ Open your browser at **[http://localhost:5173](http://localhost:5173)** to explo
 
 ## 📄 License
 This project is developed as a technical evaluation assignment. All rights reserved.
+### Step 3: Frontend Client on [Vercel.com](https://vercel.com)
+1. Import your GitHub repository into Vercel.
+2. Set configuration:
+   * **Framework Preset:** Vite
+   * **Root Directory:** `client`
+3. Add Environment Variable:
+   * `VITE_API_URL` = `https://estatepro-api.onrender.com/api`
+4. Click **Deploy**. Your live web application will be live at `https://estatepro-demo.vercel.app`!
+
+---
+
+## 🧪 Testing & Code Quality
+
+* **Production TypeScript Build:**
+  ```bash
+  cd client
+  npm run build
+  ```
+  Runs `tsc -b` type checking followed by Vite production bundling with zero errors.
+
+* **API Health Check:**
+  Navigate to `http://localhost:5000/api/health` to confirm server status and database connectivity:
+  ```json
+  {
+    "status": "healthy",
+    "message": "Real Estate Website & CRM API is running smoothly",
+    "timestamp": "2026-11-01T21:30:00.000Z"
+  }
+  ```
+
+---
+
+## 📄 License
+This project is developed as a technical evaluation assignment. All rights reserved.
