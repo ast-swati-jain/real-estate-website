@@ -1,10 +1,17 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import dns from 'dns';
 import User from '../models/User.js';
 import Property from '../models/Property.js';
 import Lead from '../models/Lead.js';
 
 dotenv.config();
+
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch {
+  // Ignore if restricted
+}
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/real_estate_crm';
 
