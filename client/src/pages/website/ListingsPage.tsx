@@ -63,6 +63,58 @@ export const ListingsPage: React.FC = () => {
     fetchMeta();
   }, []);
 
+  // Synchronize state whenever URL query params change (e.g. clicking Buy/Rent in navbar)
+  useEffect(() => {
+    const statusParam = searchParams.get('status') || '';
+    const typeParam = searchParams.get('propertyType') || '';
+    const cityParam = searchParams.get('city') || '';
+    const searchParam = searchParams.get('search') || '';
+    const minPriceParam = searchParams.get('minPrice') || '';
+    const maxPriceParam = searchParams.get('maxPrice') || '';
+    const bedroomsParam = searchParams.get('bedrooms') || '';
+    const sortParam = searchParams.get('sort') || '-createdAt';
+
+    setSelectedStatus(statusParam);
+    setSelectedType(typeParam);
+    setSelectedCity(cityParam);
+    setSearch(searchParam);
+    setMinPrice(minPriceParam);
+    setMaxPrice(maxPriceParam);
+    setBedrooms(bedroomsParam);
+    setSort(sortParam);
+    setCurrentPage(1);
+  }, [searchParams]);
+
+  // Status selection handler that syncs with URL
+  const handleStatusSelect = (st: string) => {
+    const val = st === 'All' ? '' : st;
+    setSelectedStatus(val);
+    setCurrentPage(1);
+    const newParams = new URLSearchParams(searchParams);
+    if (val) {
+      newParams.set('status', val);
+    } else {
+      newParams.delete('status');
+    }
+    newParams.delete('page');
+    setSearchParams(newParams);
+  };
+
+  // Property type selection handler that syncs with URL
+  const handleTypeSelect = (type: string) => {
+    const val = selectedType === type ? '' : type;
+    setSelectedType(val);
+    setCurrentPage(1);
+    const newParams = new URLSearchParams(searchParams);
+    if (val) {
+      newParams.set('propertyType', val);
+    } else {
+      newParams.delete('propertyType');
+    }
+    newParams.delete('page');
+    setSearchParams(newParams);
+  };
+
   // Fetch properties whenever filter states or page change
   useEffect(() => {
     const fetchProperties = async () => {
@@ -202,10 +254,7 @@ export const ListingsPage: React.FC = () => {
           {/* Quick Property Type Tabs (Responsive Scrollable on all devices) */}
           <div className="flex items-center gap-2 pt-2 border-t border-slate-100 overflow-x-auto pb-1 scrollbar-none">
             <button
-              onClick={() => {
-                setSelectedType('');
-                setCurrentPage(1);
-              }}
+              onClick={() => handleTypeSelect('')}
               className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                 !selectedType ? 'bg-brand-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
@@ -215,10 +264,7 @@ export const ListingsPage: React.FC = () => {
             {propertyTypes.map((type) => (
               <button
                 key={type}
-                onClick={() => {
-                  setSelectedType(type === selectedType ? '' : type);
-                  setCurrentPage(1);
-                }}
+                onClick={() => handleTypeSelect(type)}
                 className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   selectedType === type
                     ? 'bg-brand-600 text-white shadow-sm'
@@ -255,23 +301,25 @@ export const ListingsPage: React.FC = () => {
                   Listing Status
                 </label>
                 <div className="grid grid-cols-3 gap-1.5">
-                  {['All', 'For Sale', 'For Rent'].map((st) => (
-                    <button
-                      key={st}
-                      type="button"
-                      onClick={() => {
-                        setSelectedStatus(st === 'All' ? '' : st);
-                        setCurrentPage(1);
-                      }}
-                      className={`py-2 px-1 rounded-lg text-xs font-semibold text-center transition ${
-                        (st === 'All' && !selectedStatus) || selectedStatus === st
-                          ? 'bg-slate-900 text-white shadow-sm'
-                          : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
-                      }`}
-                    >
-                      {st}
-                    </button>
-                  ))}
+                  {['All', 'For Sale', 'For Rent'].map((st) => {
+                    const isActive = st === 'All'
+                      ? !selectedStatus
+                      : selectedStatus.toLowerCase() === st.toLowerCase();
+                    return (
+                      <button
+                        key={st}
+                        type="button"
+                        onClick={() => handleStatusSelect(st)}
+                        className={`py-2 px-1 rounded-lg text-xs font-semibold text-center transition ${
+                          isActive
+                            ? 'bg-slate-900 text-white shadow-sm'
+                            : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
+                        }`}
+                      >
+                        {st}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
@@ -418,23 +466,25 @@ export const ListingsPage: React.FC = () => {
                       Listing Status
                     </label>
                     <div className="grid grid-cols-3 gap-1.5">
-                      {['All', 'For Sale', 'For Rent'].map((st) => (
-                        <button
-                          key={st}
-                          type="button"
-                          onClick={() => {
-                            setSelectedStatus(st === 'All' ? '' : st);
-                            setCurrentPage(1);
-                          }}
-                          className={`py-2 px-1 rounded-lg font-semibold text-center transition ${
-                            (st === 'All' && !selectedStatus) || selectedStatus === st
-                              ? 'bg-slate-900 text-white shadow-sm'
-                              : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
-                          }`}
-                        >
-                          {st}
-                        </button>
-                      ))}
+                      {['All', 'For Sale', 'For Rent'].map((st) => {
+                        const isActive = st === 'All'
+                          ? !selectedStatus
+                          : selectedStatus.toLowerCase() === st.toLowerCase();
+                        return (
+                          <button
+                            key={st}
+                            type="button"
+                            onClick={() => handleStatusSelect(st)}
+                            className={`py-2 px-1 rounded-lg font-semibold text-center transition ${
+                              isActive
+                                ? 'bg-slate-900 text-white shadow-sm'
+                                : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/60'
+                            }`}
+                          >
+                            {st}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 

@@ -182,9 +182,9 @@ const seedDatabase = async () => {
       {
         title: 'Downtown Austin Tech-Loft Suite',
         description: 'Sun-drenched corner loft overlooking Lady Bird Lake. Industrial-chic concrete accents, double-height ceilings, automated motorized shades, and high-efficiency smart climate controls.',
-        price: 890000,
+        price: 4800,
         propertyType: 'Apartment',
-        status: 'For Sale',
+        status: 'For Rent',
         location: {
           address: '300 Colorado St, Unit 1904',
           city: 'Austin',
@@ -244,9 +244,9 @@ const seedDatabase = async () => {
       {
         title: 'Modern Minimalist Venice Beach Studio',
         description: 'Chic designer studio just two blocks from Abbot Kinney and Venice Boardwalk. Polished concrete floors, stainless steel appliances, oversized glass balcony, and turnkey furnished.',
-        price: 495000,
+        price: 3200,
         propertyType: 'Studio',
-        status: 'For Sale',
+        status: 'For Rent',
         location: {
           address: '612 Venice Blvd',
           city: 'Los Angeles',
@@ -306,9 +306,9 @@ const seedDatabase = async () => {
       {
         title: 'Coral Gables Mediterranean Estate',
         description: 'Timeless Mediterranean sanctuary nestled among century-old banyans in Coral Gables. Barrel tile roofing, grand circular driveway, resort pool with waterfall, and private guest casita.',
-        price: 4200000,
+        price: 18500,
         propertyType: 'Villa',
-        status: 'For Sale',
+        status: 'For Rent',
         location: {
           address: '1420 Granada Blvd',
           city: 'Miami',
@@ -337,9 +337,9 @@ const seedDatabase = async () => {
       {
         title: 'Lincoln Park Historic Brownstone',
         description: 'Meticulously restored multi-level brownstone steps from Lincoln Park and Lake Michigan. Custom wrought-iron accents, chef kitchen with Sub-Zero appliances, and private rooftop deck.',
-        price: 2650000,
+        price: 9200,
         propertyType: 'Townhouse',
-        status: 'For Sale',
+        status: 'For Rent',
         location: {
           address: '2214 N Cleveland Ave',
           city: 'Chicago',

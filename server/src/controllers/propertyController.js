@@ -42,9 +42,9 @@ export const getProperties = async (req, res, next) => {
       query.propertyType = propertyType;
     }
 
-    // Filter by status (For Sale, For Rent, etc.)
+    // Filter by status (For Sale, For Rent, etc.) - case-insensitive
     if (status && status !== 'All') {
-      query.status = status;
+      query.status = new RegExp(`^${status.trim()}$`, 'i');
     }
 
     // Filter by budget range (price)

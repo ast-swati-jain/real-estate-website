@@ -34,7 +34,7 @@ export const Navbar: React.FC = () => {
             <Link
               to="/"
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                isNavActive('/')
+                location.pathname === '/'
                   ? 'text-brand-600 bg-brand-50/80'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
             <Link
               to="/properties"
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                isNavActive('/properties')
+                location.pathname === '/properties' && !location.search.toLowerCase().includes('status=')
                   ? 'text-brand-600 bg-brand-50/80'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
               }`}
@@ -53,13 +53,21 @@ export const Navbar: React.FC = () => {
             </Link>
             <Link
               to="/properties?status=For+Sale"
-              className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                location.pathname === '/properties' && location.search.toLowerCase().includes('status=for+sale')
+                  ? 'text-brand-600 bg-brand-50/80'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
             >
               Buy
             </Link>
             <Link
               to="/properties?status=For+Rent"
-              className="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                location.pathname === '/properties' && location.search.toLowerCase().includes('status=for+rent')
+                  ? 'text-brand-600 bg-brand-50/80'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+              }`}
             >
               Rent
             </Link>
