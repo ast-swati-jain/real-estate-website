@@ -1,7 +1,8 @@
 # EstatePro | Premium Real Estate Website & Lead Management CRM
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://estatepro-demo.vercel.app)
-[![API Status](https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render)](https://estatepro-api.onrender.com/api/health)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://realestatewebsiteswati.vercel.app/)
+[![API Status](https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render)](https://real-estate-website-nffm.onrender.com/api/health)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/ast-swati-jain/real-estate-website)
 [![React](https://img.shields.io/badge/React_18-TypeScript-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express_&_MongoDB-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
@@ -12,10 +13,11 @@ A modern, responsive, full-stack real estate platform and centralized customer r
 
 ## 📌 Submission & Evaluation Overview
 
-* **Repository:** Complete full-stack monorepo (`client/` and `server/`)
-* **Live Web Portal:** [https://estatepro-demo.vercel.app](https://estatepro-demo.vercel.app) *(or your deployed Vercel link)*
-* **Live API Endpoint:** [https://estatepro-api.onrender.com/api/health](https://estatepro-api.onrender.com/api/health) *(or your deployed Render link)*
-* **Demo Video / Walkthrough:** [Watch 3-Minute Demo Video](https://loom.com) *(replace with your recording link)*
+* **Repository:** [https://github.com/ast-swati-jain/real-estate-website](https://github.com/ast-swati-jain/real-estate-website)
+* **Live Web Portal:** [https://realestatewebsiteswati.vercel.app/](https://realestatewebsiteswati.vercel.app/)
+* **Live API Health Endpoint:** [https://real-estate-website-nffm.onrender.com/api/health](https://real-estate-website-nffm.onrender.com/api/health)
+* **API Base URL:** [https://real-estate-website-nffm.onrender.com/api](https://real-estate-website-nffm.onrender.com/api)
+* **Demo Video / Walkthrough:** [Watch 3-Minute Demo Video](https://loom.com) *(Optional - Add your recording link here)*
 
 ### 🔑 Demo Credentials (1-Click Login available on CRM login page)
 
@@ -316,26 +318,20 @@ Open your browser at **[http://localhost:5173](http://localhost:5173)** to explo
 4. Run `npm run seed` in your local `server/` directory pointing to this URI to populate the cloud database with demo data.
 
 ### Step 2: Backend API on [Render.com](https://render.com)
-1. Connect your GitHub repository and choose **New Web Service**.
-2. Set configuration:
-   * **Root Directory:** `server`
-   * **Build Command:** `npm install`
-   * **Start Command:** `node src/server.js`
-3. Add Environment Variables:
-   * `NODE_ENV` = `production`
-   * `PORT` = `5000`
-   * `MONGODB_URI` = *(your MongoDB Atlas URI)*
-   * `JWT_SECRET` = `estate_pro_super_secret_jwt_key_2026`
-4. Copy your live service URL: `https://estatepro-api.onrender.com`.
+* **Live Service:** [https://real-estate-website-nffm.onrender.com](https://real-estate-website-nffm.onrender.com)
+* **API Health Check:** [https://real-estate-website-nffm.onrender.com/api/health](https://real-estate-website-nffm.onrender.com/api/health)
+* **Configuration:**
+  * **Root Directory:** `server`
+  * **Build Command:** `npm install`
+  * **Start Command:** `node src/server.js`
+  * **Environment Variables:** `NODE_ENV=production`, `PORT=5000`, `MONGODB_URI`, `JWT_SECRET`
 
 ### Step 3: Frontend Client on [Vercel.com](https://vercel.com)
-1. Import your GitHub repository into Vercel.
-2. Set configuration:
-   * **Framework Preset:** Vite
-   * **Root Directory:** `client`
-3. Add Environment Variable:
-   * `VITE_API_URL` = `https://estatepro-api.onrender.com/api`
-4. Click **Deploy**. Your live web application will be live at `https://estatepro-demo.vercel.app`!
+* **Live Web Portal:** [https://realestatewebsiteswati.vercel.app/](https://realestatewebsiteswati.vercel.app/)
+* **Configuration:**
+  * **Framework Preset:** Vite
+  * **Root Directory:** `client`
+  * **Environment Variable:** `VITE_API_URL=https://real-estate-website-nffm.onrender.com/api`
 
 ---
 
@@ -349,46 +345,12 @@ Open your browser at **[http://localhost:5173](http://localhost:5173)** to explo
   Runs `tsc -b` type checking followed by Vite production bundling with zero errors.
 
 * **API Health Check:**
-  Navigate to `http://localhost:5000/api/health` to confirm server status and database connectivity:
+  Navigate to [https://real-estate-website-nffm.onrender.com/api/health](https://real-estate-website-nffm.onrender.com/api/health) to confirm live server status and MongoDB Atlas cloud connectivity:
   ```json
   {
     "status": "healthy",
     "message": "Real Estate Website & CRM API is running smoothly",
-    "timestamp": "2026-11-01T21:30:00.000Z"
-  }
-  ```
-
----
-
-## 📄 License
-This project is developed as a technical evaluation assignment. All rights reserved.
-### Step 3: Frontend Client on [Vercel.com](https://vercel.com)
-1. Import your GitHub repository into Vercel.
-2. Set configuration:
-   * **Framework Preset:** Vite
-   * **Root Directory:** `client`
-3. Add Environment Variable:
-   * `VITE_API_URL` = `https://estatepro-api.onrender.com/api`
-4. Click **Deploy**. Your live web application will be live at `https://estatepro-demo.vercel.app`!
-
----
-
-## 🧪 Testing & Code Quality
-
-* **Production TypeScript Build:**
-  ```bash
-  cd client
-  npm run build
-  ```
-  Runs `tsc -b` type checking followed by Vite production bundling with zero errors.
-
-* **API Health Check:**
-  Navigate to `http://localhost:5000/api/health` to confirm server status and database connectivity:
-  ```json
-  {
-    "status": "healthy",
-    "message": "Real Estate Website & CRM API is running smoothly",
-    "timestamp": "2026-11-01T21:30:00.000Z"
+    "timestamp": "2026-11-01T22:00:00.000Z"
   }
   ```
 
